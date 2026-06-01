@@ -118,3 +118,29 @@ test_payment_metadata               ✅
 | Refund | `requestRefund()` after challenge period |
 | Python client | `PaymentClient` class with sync + async support |
 | Tests | Mock chain state, 10 test cases |
+
+## Foundry tests
+
+Solidity-level tests for `AgentEscrow.sol` live in `tests-foundry/` and run
+under [Foundry](https://book.getfoundry.sh/).
+
+```bash
+# install foundry once
+curl -L https://foundry.paradigm.xyz | bash && foundryup
+
+# fetch forge-std submodule
+git submodule update --init --recursive
+
+# build + run
+forge build
+forge test -vvv
+```
+
+Coverage:
+
+- happy path (create → confirm → release)
+- timeout + challenge-period refund
+- cancellation
+- access-control on `confirmPayment` / `requestRefund` / `cancelPayment`
+- reentrancy on every external `call{value:}` (via `MaliciousReceiver` mock)
+- event emission for each state transition
