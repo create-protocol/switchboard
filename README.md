@@ -31,7 +31,7 @@ This PR adds:
 ## Files
 
 ```
-kcolb-switchboard/
+switchboard/
 ├── contracts/
 │   └── AgentEscrow.sol          # Solidity escrow contract
 ├── src/
