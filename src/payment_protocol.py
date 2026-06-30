@@ -507,7 +507,7 @@ def parse_wei(amount: str) -> int:
     
     multiplier = {
         "ETH": 10**18,
-        "wei": 1,
+        "WEI": 1,
         "KETH": 10**21,
     }.get(currency.upper(), 10**18)
     
